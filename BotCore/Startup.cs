@@ -59,6 +59,7 @@ namespace BotCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             app.Use(async (context, next) =>
             {
                 // Obter o JWT do cabeçalho de autorização

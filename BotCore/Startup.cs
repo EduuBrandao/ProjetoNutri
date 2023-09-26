@@ -1,5 +1,9 @@
+using Application.Business;
+using Application.Interface;
 using BotCoreApplication.ApplicationService;
 using BotCoreApplication.Service;
+using Domain.Interfaces;
+using Domain.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +16,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BotCore
 {
@@ -28,7 +33,11 @@ namespace BotCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            services.AddHttpClient<ICepService, CepService>(client =>
+            {
+                client.BaseAddress = new Uri("https://viacep.com.br/");
+            });
+            services.AddScoped<ICep, CepBusiness>();
             services.AddScoped<IJwtService, JwtService>();
             services.AddSwaggerGen(c =>
             {

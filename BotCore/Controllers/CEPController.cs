@@ -20,7 +20,7 @@ namespace BotCore.Controllers
         [Authorize]
         public async Task<IActionResult> GetCep(string cep)
         {
-            var endereco = await _cep.GetAddress(cep);
+            var endereco = await _cep.ObterEnderecoPorCep(cep);
 
             if (endereco != null)
                 return Ok(endereco);

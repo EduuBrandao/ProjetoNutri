@@ -9,6 +9,6 @@ namespace Application.Interface
 {
     public interface ICep
     {
-        Task<Endereco> GetAddress(string cep);
+        Task<Endereco> ObterEnderecoPorCep(string cep);
     }
 }

@@ -16,7 +16,7 @@ namespace Application.Business
         {
             _CepService = cepService;
         }
-        public async Task<Endereco> GetAddress(string cep)
+        public async Task<Endereco> ObterEnderecoPorCep(string cep)
         {
             return await _CepService.ObterEnderecoPorCEPAsync(cep);
         }

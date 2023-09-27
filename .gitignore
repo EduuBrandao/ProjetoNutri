@@ -63,3 +63,50 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Ignorar todos os arquivos relacionados ao Visual Studio
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# Pasta de pacotes do NuGet
+packages/
+
+# Pasta de saída padrão do Visual Studio
+bin/
+obj/
+
+# Cache de análise do Roslyn
+*.ide
+
+# Cache de análise do Rider (se estiver usando Rider)
+.idea/
+
+# Arquivos temporários do Rider (se estiver usando Rider)
+*.suo
+*.user
+*.userosscache
+.idea/
+
+# Pasta de saída do Rider (se estiver usando Rider)
+.idea/
+
+# Arquivos de configuração específicos do Visual Studio
+/.vscode/
+/.sln.docstates
+
+# Logs e saída de depuração
+*.log
+*.log.*
+__pycache__/
+*.pyc
+
+# Pasta de publicação GitHub Pages (se aplicável)
+.github/

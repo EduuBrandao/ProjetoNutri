@@ -27,17 +27,5 @@ namespace BotCore.Controllers
             return BadRequest(endereco);
 
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GetClientes()
-        {
-            var Clientes = await _cep.ObterClientes();
-
-            if (Clientes != null)
-                return Ok(Clientes);
-
-            return BadRequest(Clientes);
-
-        }
     }
 }

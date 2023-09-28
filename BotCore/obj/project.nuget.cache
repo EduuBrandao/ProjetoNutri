@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XwIay+HswiZF3JC2R5LA2tnHXlRQVnlEGZ93JqgYDF8lq6F51XEEIKC7/l3LT/dwqVugEraL7dtS9sBdx83sQw==",
+  "dgSpecHash": "gwrMPd38Mqs5iOj6myFB9diqrhRbJ9svuG4iFo2S8DZotUBxrIItJe0XGi31GyO+KYHJE8xUaVRfPXUjAcapig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\BotCore.csproj",
+  "projectFilePath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\CoreAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Edu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

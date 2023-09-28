@@ -41,6 +41,9 @@ namespace BotCore
         {
             services.AddControllers();
             services.AddScoped<INutriRepository, NutriService>();
+            services.AddScoped<ICep, CepBusiness>();
+            services.AddScoped<IClientes, ClienteBusiness>();
+            services.AddScoped<IJwtService, JwtService>();
             services.AddDbContext<NutriContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -58,8 +61,7 @@ namespace BotCore
             {
                 client.BaseAddress = new Uri("https://viacep.com.br/");
             });
-            services.AddScoped<ICep, CepBusiness>();
-            services.AddScoped<IJwtService, JwtService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });

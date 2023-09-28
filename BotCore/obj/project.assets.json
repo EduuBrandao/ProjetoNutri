@@ -3643,9 +3643,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\BotCore.csproj",
-      "projectName": "BotCore",
-      "projectPath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\BotCore.csproj",
+      "projectUniqueName": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\CoreAPI.csproj",
+      "projectName": "CoreAPI",
+      "projectPath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\CoreAPI.csproj",
       "packagesPath": "C:\\Users\\Edu\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\obj\\",
       "projectStyle": "PackageReference",

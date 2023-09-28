@@ -40,22 +40,11 @@ namespace BotCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<INutriRepository, NutriService>();
-            services.AddScoped<ICep, CepBusiness>();
-            services.AddScoped<IClientes, ClienteBusiness>();
+            services.AddServices(Configuration)
+                    .AddInfrastructure(Configuration)
+                    .AddMapper();
+                    
             services.AddScoped<IJwtService, JwtService>();
-            services.AddDbContext<NutriContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Clientes, ClientesConfig>();
-                cfg.CreateMap<ClientesConfig, Clientes>();
-            }
-            );
-            IMapper mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
 
             services.AddHttpClient<ICepService, CepService>(client =>
             {

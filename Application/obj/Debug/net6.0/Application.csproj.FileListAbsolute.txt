@@ -13,3 +13,5 @@ C:\Users\Edu\Desktop\Nova pasta\botcore\Application\obj\Debug\net6.0\Application
 C:\Users\Edu\Desktop\Nova pasta\botcore\Application\obj\Debug\net6.0\refint\Application.dll
 C:\Users\Edu\Desktop\Nova pasta\botcore\Application\obj\Debug\net6.0\Application.pdb
 C:\Users\Edu\Desktop\Nova pasta\botcore\Application\obj\Debug\net6.0\ref\Application.dll
+C:\Users\Edu\Desktop\Nova pasta\botcore\Application\bin\Debug\net6.0\Infra.dll
+C:\Users\Edu\Desktop\Nova pasta\botcore\Application\bin\Debug\net6.0\Infra.pdb

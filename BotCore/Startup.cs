@@ -1,12 +1,19 @@
 using Application.Business;
 using Application.Interface;
+using AutoMapper;
 using BotCoreApplication.ApplicationService;
 using BotCoreApplication.Service;
+using Domain.Entidades.Nutricionista.Clientes;
 using Domain.Interfaces;
 using Domain.Service;
+using Infra.Data;
+using Infra.InfraRepository;
+using Infra.Models;
+using Infra.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,6 +40,20 @@ namespace BotCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<INutriRepository, NutriService>();
+            services.AddDbContext<NutriContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Clientes, ClientesConfig>();
+                cfg.CreateMap<ClientesConfig, Clientes>();
+            }
+            );
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddHttpClient<ICepService, CepService>(client =>
             {
                 client.BaseAddress = new Uri("https://viacep.com.br/");

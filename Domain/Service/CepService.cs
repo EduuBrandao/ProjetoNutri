@@ -13,7 +13,7 @@ namespace Domain.Service
     public class CepService : ICepService
     {
         private readonly HttpClient _httpClient;
-
+        
         public CepService(HttpClient httpClient)
         {
             _httpClient = httpClient;

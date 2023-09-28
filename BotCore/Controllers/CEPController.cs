@@ -17,7 +17,6 @@ namespace BotCore.Controllers
         }
 
         [HttpGet("{cep}")]
-        [Authorize]
         public async Task<IActionResult> GetCep(string cep)
         {
             var endereco = await _cep.ObterEnderecoPorCep(cep);
@@ -26,6 +25,18 @@ namespace BotCore.Controllers
                 return Ok(endereco);
 
             return BadRequest(endereco);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetClientes()
+        {
+            var Clientes = await _cep.ObterClientes();
+
+            if (Clientes != null)
+                return Ok(Clientes);
+
+            return BadRequest(Clientes);
 
         }
     }

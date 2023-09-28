@@ -1,4 +1,5 @@
 ﻿using Domain.Entidades;
+using Domain.Entidades.Nutricionista.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,8 @@ namespace Application.Interface
     public interface ICep
     {
         Task<Endereco> ObterEnderecoPorCep(string cep);
+
+        Task<List<Clientes>> ObterClientes();
+        
     }
 }

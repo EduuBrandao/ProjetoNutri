@@ -1,11 +1,6 @@
 ﻿using Application.Interface;
 using Domain.Entidades.Nutricionista.Clientes;
 using Infra.InfraRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Business
 {
@@ -19,6 +14,11 @@ namespace Application.Business
         public async Task<List<Clientes>> ObterClientes()
         {
             return await _Nutri.Get();
+        }
+
+        public void AdicionarClientes(Clientes cliente)
+        {
+              _Nutri.Post(cliente);
         }
     }
 }

@@ -1,19 +1,10 @@
-using Application.Business;
-using Application.Interface;
-using AutoMapper;
 using BotCoreApplication.ApplicationService;
 using BotCoreApplication.Service;
-using Domain.Entidades.Nutricionista.Clientes;
 using Domain.Interfaces;
 using Domain.Service;
-using Infra.Data;
-using Infra.InfraRepository;
-using Infra.Models;
-using Infra.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,7 +27,6 @@ namespace BotCore
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -77,19 +67,15 @@ namespace BotCore
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
             app.Use(async (context, next) =>
             {
-                // Obter o JWT do cabeçalho de autorização
                 var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
                 if (authHeader != null && authHeader.StartsWith("Bearer "))
                 {
                     var token = authHeader.Substring("Bearer ".Length).Trim();
-
-                    // Validar e decodificar o JWT
                     var tokenHandler = new JwtSecurityTokenHandler();
                     var key = Encoding.ASCII.GetBytes(Configuration["JwtSecret"]);
                     var tokenValidationParameters = new TokenValidationParameters
@@ -105,13 +91,12 @@ namespace BotCore
                         var guidClaim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "Accountcontextkey");
                         if (guidClaim != null && Guid.TryParse(guidClaim.Value, out var accountContextKey))
                         {
-                            // Adicionar o GUID como um item no contexto da solicitação
                             context.Items["Accountcontextkey"] = accountContextKey;
                         }
                     }
                     catch (Exception ex)
                     {
-                        // Lidar com erros de validação do JWT
+                       
                     }
                 }
 

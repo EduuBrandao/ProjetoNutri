@@ -29,9 +29,9 @@ namespace Infra.Data
             {
                 entity.ToTable("clientes");
 
-                entity.HasKey(e => e.Id);
+                entity.HasKey(e => e.id);
 
-                entity.Property(e => e.Id).HasColumnName("id"); // Certifique-se de que a propriedade corresponda ao nome da coluna no banco de dados
+                entity.Property(e => e.id).HasColumnName("id"); // Certifique-se de que a propriedade corresponda ao nome da coluna no banco de dados
 
                 entity.Property(e => e.nome)
                     .HasMaxLength(100)

@@ -3,11 +3,6 @@ using Domain.Entidades.Nutricionista.Clientes;
 using Infra.Data;
 using Infra.InfraRepository;
 using Infra.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infra.Service
 {
@@ -24,6 +19,13 @@ namespace Infra.Service
             var document = Context.DadosClientes.ToList();
 
             return Mapper<List<Clientes>>(document);
+        }
+
+        public void Post(Clientes cliente)
+        {
+            ClientesConfig clientesConfig = Mapper<ClientesConfig>(cliente);
+            Context.DadosClientes.Add(clientesConfig);
+            Context.SaveChanges();
         }
 
         protected T Mapper<T>(Object data)

@@ -1,5 +1,7 @@
 ﻿using Application.Interface;
+using Domain.Entidades.Nutricionista.Clientes;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace CoreAPI.Controllers
@@ -24,6 +26,21 @@ namespace CoreAPI.Controllers
                 return Ok(Clientes);
 
             return BadRequest(Clientes);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostClientes([FromBody] Clientes cliente)
+        {
+            try
+            {
+                _clientes.AdicionarClientes(cliente);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro ao adicionar cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
+            }
 
         }
     }

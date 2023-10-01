@@ -25,19 +25,13 @@ namespace BotCore.Controllers
         [AllowAnonymous]
         public IActionResult Authenticate()
         {
-            var apiKey = Request.Headers["X-API-KEY"];
-            var validApiKey = _config.GetValue<string>("ApiKey");
-
-            if (apiKey != validApiKey)
-            {
+            if (Request.Headers["X-API-KEY"] != _config.GetValue<string>("ApiKey"))
                 return Unauthorized();
-            }
 
             var token = _jwtService.GenerateToken(Guid.NewGuid());
 
-
-                return Ok(token);
-            }
+            return Ok(token);
+        }
 
     }
 

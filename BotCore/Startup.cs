@@ -33,7 +33,7 @@ namespace BotCore
             services.AddServices(Configuration)
                     .AddInfrastructure(Configuration)
                     .AddMapper();
-                    
+
             services.AddScoped<IJwtService, JwtService>();
 
             services.AddHttpClient<ICepService, CepService>(client =>
@@ -69,40 +69,6 @@ namespace BotCore
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-            app.Use(async (context, next) =>
-            {
-                var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
-                if (authHeader != null && authHeader.StartsWith("Bearer "))
-                {
-                    var token = authHeader.Substring("Bearer ".Length).Trim();
-                    var tokenHandler = new JwtSecurityTokenHandler();
-                    var key = Encoding.ASCII.GetBytes(Configuration["JwtSecret"]);
-                    var tokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                    try
-                    {
-                        var claimsPrincipal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
-                        var guidClaim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "Accountcontextkey");
-                        if (guidClaim != null && Guid.TryParse(guidClaim.Value, out var accountContextKey))
-                        {
-                            context.Items["Accountcontextkey"] = accountContextKey;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                       
-                    }
-                }
-
-                await next.Invoke();
-            });
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -115,9 +81,9 @@ namespace BotCore
             app.UseRouting();
 
             app.UseCors(x => x
-         .AllowAnyOrigin()
-         .AllowAnyMethod()
-         .AllowAnyHeader());
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader());
 
             app.UseAuthentication();
             app.UseAuthorization();

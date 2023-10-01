@@ -24,30 +24,13 @@ namespace BotCoreApplication.Service
             public string GenerateToken(Guid accountContextKey)
             
             {
-            //var tokenHandler = new JwtSecurityTokenHandler();
-            //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetValue<string>("JwtSecret")));
-            //    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            //    var token = new JwtSecurityToken(
-            //        issuer: _config["AppSettings:JwtIssuer"],
-            //        audience: _config["AppSettings:JwtAudience"],
-            //        expires: DateTime.Now.AddMinutes(30),
-            //        signingCredentials: creds);
-
-            //    return new JwtSecurityTokenHandler().WriteToken(token);
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_config.GetValue<string>("JwtSecret"));
+            var key = Encoding.ASCII.GetBytes(_secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[]
-                {
-                new Claim("Accountcontextkey", accountContextKey.ToString())
-            }),
-                Expires = DateTime.Now.AddMinutes(30),
+                Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-
-            // Gere o token JWT
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }

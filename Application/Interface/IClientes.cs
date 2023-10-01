@@ -7,5 +7,7 @@ namespace Application.Interface
         Task<List<Clientes>> ObterClientes();
 
         void AdicionarClientes(Clientes cliente);
+
+        Task<Clientes> AtualizarClientes(Clientes cliente);
     }
 }

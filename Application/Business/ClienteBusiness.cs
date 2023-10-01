@@ -18,7 +18,12 @@ namespace Application.Business
 
         public void AdicionarClientes(Clientes cliente)
         {
-              _Nutri.Post(cliente);
+            _Nutri.Post(cliente);
+        }
+
+        public async Task<Clientes> AtualizarClientes(Clientes cliente)
+        {
+            return await _Nutri.Put(cliente);
         }
     }
 }

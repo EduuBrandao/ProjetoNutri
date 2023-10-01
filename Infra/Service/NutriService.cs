@@ -3,6 +3,7 @@ using Domain.Entidades.Nutricionista.Clientes;
 using Infra.Data;
 using Infra.InfraRepository;
 using Infra.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Service
 {
@@ -21,11 +22,33 @@ namespace Infra.Service
             return Mapper<List<Clientes>>(document);
         }
 
+        public async Task<Clientes> GetById(int id)
+        {
+            var document = await Context.DadosClientes.Where(x => x.id == id).FirstOrDefaultAsync();
+
+            return Mapper<Clientes>(document);
+        }
+
         public void Post(Clientes cliente)
         {
             ClientesConfig clientesConfig = Mapper<ClientesConfig>(cliente);
             Context.DadosClientes.Add(clientesConfig);
             Context.SaveChanges();
+        }
+
+        public async Task<Clientes> Put(Clientes cliente)
+        {
+            var document = await Context.DadosClientes.Where(x => x.cpf == cliente.cpf).FirstOrDefaultAsync();
+
+            if (document == null)
+                throw new ArgumentException("Cliente não encontrado no banco de dados.", nameof(cliente.cpf));
+
+            document.idade = cliente.idade;
+            document.nome = cliente.nome;
+
+            Context.DadosClientes.Update(document);
+            Context.SaveChanges();
+            return Mapper<Clientes>(document);
         }
 
         protected T Mapper<T>(Object data)

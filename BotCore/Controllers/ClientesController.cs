@@ -41,7 +41,20 @@ namespace CoreAPI.Controllers
             {
                 return BadRequest($"Erro ao adicionar cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
             }
+        }
 
+        [HttpPut]
+        public async Task<IActionResult> PutClientes([FromBody] Clientes cliente)
+        {
+            try
+            {
+                var document = await _clientes.AtualizarClientes(cliente);
+                return Ok(document);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro ao adicionar cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
+            }
         }
     }
 }

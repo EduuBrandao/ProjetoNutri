@@ -9,5 +9,7 @@ namespace Application.Interface
         void AdicionarClientes(Clientes cliente);
 
         Task<Clientes> AtualizarClientes(Clientes cliente);
+
+        Task<string> DeletarCliente(string cpf);
     }
 }

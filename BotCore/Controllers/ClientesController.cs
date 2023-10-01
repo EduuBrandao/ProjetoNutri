@@ -53,6 +53,20 @@ namespace CoreAPI.Controllers
             }
             catch (Exception ex)
             {
+                return BadRequest($"Erro ao atualizar cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
+            }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> CancelarClientes([FromBody] string cpf)
+        {
+            try
+            {
+                var message = await _clientes.DeletarCliente(cpf);
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
                 return BadRequest($"Erro ao adicionar cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
             }
         }

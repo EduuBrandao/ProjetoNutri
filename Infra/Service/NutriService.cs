@@ -15,6 +15,26 @@ namespace Infra.Service
             _mapper = mapper;
         }
 
+        public async Task<string> Delete(string cpf)
+        {
+            try
+            {
+                var document = await Context.DadosClientes.Where(x => x.cpf == cpf).FirstOrDefaultAsync();
+
+                if (document == null)
+                    throw new ArgumentException("Cliente não encontrado no banco de dados.", nameof(cpf));
+
+                Context.DadosClientes.Remove(document);
+                Context.SaveChanges();
+                return $"Usuario do CPF: {cpf} deletado da base de dados!!";
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("Algo deu errado", nameof(cpf));
+                return $"Não foi possivel deletar o cliente do cpf: {cpf}";
+            }
+        }
+
         public async Task<List<Clientes>> Get()
         {
             var document = Context.DadosClientes.ToList();

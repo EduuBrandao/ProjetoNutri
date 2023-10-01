@@ -25,5 +25,10 @@ namespace Application.Business
         {
             return await _Nutri.Put(cliente);
         }
+
+        public async Task<string> DeletarCliente(string cpf)
+        {
+            return await _Nutri.Delete(cpf);
+        }
     }
 }

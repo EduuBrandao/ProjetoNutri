@@ -67,7 +67,7 @@ namespace CoreAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro ao adicionar cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
+                return BadRequest($"Erro ao Excluir cliente: {ex.Message}, InnerException: {ex.InnerException?.Message}");
             }
         }
     }

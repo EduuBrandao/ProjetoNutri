@@ -15,6 +15,6 @@ namespace Domain.Entidades.Nutricionista.Clientes
         public decimal Peso { get; set; }
         public decimal Altura { get; set; }
 
-        public EnderecoResponseDTO Endereco { get; set; }
+        public List<EnderecoResponseDTO> Endereco { get; set; }
     }
 }

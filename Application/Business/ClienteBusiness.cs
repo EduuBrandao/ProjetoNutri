@@ -51,7 +51,7 @@ namespace Application.Business
                     Idade = cliente.idade,
                     Nome = cliente.nome,
                     Sexo = cliente.sexo,
-                    Endereco = endereco.Where(x => x.ClientId == cliente.Id).FirstOrDefault()
+                    Endereco = endereco.Where(x => x.ClientId == cliente.Id).ToList()
                 };
 
                 clientesInfos.Add(clienteInfo);

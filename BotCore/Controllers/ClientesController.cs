@@ -30,7 +30,7 @@ namespace CoreAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostClientes([FromBody] Clientes cliente)
+        public async Task<IActionResult> PostClientes([FromBody] ClientesRequestDTO cliente)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace CoreAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> PutClientes([FromBody] Clientes cliente)
+        public async Task<IActionResult> PutClientes([FromBody] ClientesRequestDTO cliente)
         {
             try
             {

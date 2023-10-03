@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entidades.Nutricionista.Clientes
 {
-    public class Clientes
+    public class ClientesResponseDTO
     {
+        public int Id { get; set; }
         public string nome { get; set; }
         public int idade { get; set; }
         public string sexo { get; set; }

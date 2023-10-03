@@ -35,28 +35,28 @@ namespace Infra.Service
             }
         }
 
-        public async Task<List<Clientes>> Get()
+        public async Task<List<ClientesResponseDTO>> Get()
         {
             var document = Context.DadosClientes.ToList();
 
-            return Mapper<List<Clientes>>(document);
+            return Mapper<List<ClientesResponseDTO>>(document);
         }
 
-        public async Task<Clientes> GetById(int id)
+        public async Task<ClientesResponseDTO> GetById(int id)
         {
             var document = await Context.DadosClientes.Where(x => x.id == id).FirstOrDefaultAsync();
 
-            return Mapper<Clientes>(document);
+            return Mapper<ClientesResponseDTO>(document);
         }
 
-        public void Post(Clientes cliente)
+        public void Post(ClientesRequestDTO cliente)
         {
             ClientesConfig clientesConfig = Mapper<ClientesConfig>(cliente);
             Context.DadosClientes.Add(clientesConfig);
             Context.SaveChanges();
         }
 
-        public async Task<Clientes> Put(Clientes cliente)
+        public async Task<ClientesResponseDTO> Put(ClientesRequestDTO cliente)
         {
             var document = await Context.DadosClientes.Where(x => x.cpf == cliente.cpf).FirstOrDefaultAsync();
 
@@ -68,7 +68,7 @@ namespace Infra.Service
 
             Context.DadosClientes.Update(document);
             Context.SaveChanges();
-            return Mapper<Clientes>(document);
+            return Mapper<ClientesResponseDTO>(document);
         }
 
         protected T Mapper<T>(Object data)

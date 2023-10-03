@@ -4,11 +4,11 @@ namespace Application.Interface
 {
     public interface IClientes
     {
-        Task<List<Clientes>> ObterClientes();
+        Task<List<ClienteInfo>> ObterClientes();
 
-        void AdicionarClientes(Clientes cliente);
+        void AdicionarClientes(ClientesRequestDTO cliente);
 
-        Task<Clientes> AtualizarClientes(Clientes cliente);
+        Task<ClientesResponseDTO> AtualizarClientes(ClientesRequestDTO cliente);
 
         Task<string> DeletarCliente(string cpf);
     }

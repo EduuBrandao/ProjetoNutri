@@ -7,7 +7,7 @@ namespace Application.Interface
     {
         Task<Endereco> ObterEnderecoPorCep(string cep);
 
-        Task<List<Clientes>> ObterClientes();
+        Task<List<ClientesResponseDTO>> ObterClientes();
         
     }
 }

@@ -7,21 +7,25 @@ namespace Application.Business
     public class ClienteBusiness : IClientes
     {
         private readonly INutriRepository _Nutri;
-        public ClienteBusiness(INutriRepository nutri)
+        private readonly IEnderecoRepository _endereco;
+        public ClienteBusiness(INutriRepository nutri, IEnderecoRepository endereco)
         {
             _Nutri = nutri;
+            _endereco = endereco;
         }
-        public async Task<List<Clientes>> ObterClientes()
+        public async Task<List<ClienteInfo>> ObterClientes()
         {
-            return await _Nutri.Get();
-        }
+            var endereco = await _endereco.Get();
+            var clientes = await _Nutri.Get();
 
-        public void AdicionarClientes(Clientes cliente)
+            return ClienteAdapter(endereco, clientes);
+        }
+        public void AdicionarClientes(ClientesRequestDTO cliente)
         {
             _Nutri.Post(cliente);
         }
 
-        public async Task<Clientes> AtualizarClientes(Clientes cliente)
+        public async Task<ClientesResponseDTO> AtualizarClientes(ClientesRequestDTO cliente)
         {
             return await _Nutri.Put(cliente);
         }
@@ -29,6 +33,30 @@ namespace Application.Business
         public async Task<string> DeletarCliente(string cpf)
         {
             return await _Nutri.Delete(cpf);
+        }
+
+
+        private List<ClienteInfo> ClienteAdapter(List<EnderecoResponseDTO> endereco, List<ClientesResponseDTO> clientes)
+        {
+            var clientesInfos = new List<ClienteInfo>();
+
+
+            foreach (var cliente in clientes)
+            {
+                var clienteInfo = new ClienteInfo
+                {
+                    Altura = cliente.altura,
+                    Cpf = cliente.cpf,
+                    Peso = cliente.peso,
+                    Idade = cliente.idade,
+                    Nome = cliente.nome,
+                    Sexo = cliente.sexo,
+                    Endereco = endereco.Where(x => x.ClientId == cliente.Id).FirstOrDefault()
+                };
+
+                clientesInfos.Add(clienteInfo);
+            }
+            return clientesInfos;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Application.Business
             return await _CepService.ObterEnderecoPorCEPAsync(cep);
         }
 
-        public async Task<List<Clientes>> ObterClientes()
+        public async Task<List<ClientesResponseDTO>> ObterClientes()
         {
             return await _Nutri.Get();
         }

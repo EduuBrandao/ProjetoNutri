@@ -15,8 +15,12 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Clientes, ClientesConfig>();
-                cfg.CreateMap<ClientesConfig, Clientes>();
+                cfg.CreateMap<ClientesResponseDTO, ClientesConfig>();
+                cfg.CreateMap<ClientesConfig, ClientesResponseDTO>();
+                cfg.CreateMap<ClientesRequestDTO, ClientesConfig>();
+                cfg.CreateMap<ClientesConfig, ClientesRequestDTO>();
+                cfg.CreateMap<EnderecoResponseDTO, EnderecoConfig>();
+                cfg.CreateMap<EnderecoConfig, EnderecoResponseDTO>();
             }
            );
             IMapper mapper = config.CreateMapper();

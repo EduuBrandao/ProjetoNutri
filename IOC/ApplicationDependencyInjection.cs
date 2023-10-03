@@ -17,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<INutriRepository, NutriService>();
+            services.AddScoped<IEnderecoRepository, EnderecoService>();
             services.AddScoped<ICep, CepBusiness>();
             services.AddScoped<IClientes, ClienteBusiness>();
             

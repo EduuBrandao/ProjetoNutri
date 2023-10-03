@@ -20,6 +20,7 @@ namespace Infra.Data
         }
 
         public virtual DbSet<ClientesConfig> DadosClientes { get; set; }
+        public virtual DbSet<EnderecoConfig> EnderecoClientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,28 +32,62 @@ namespace Infra.Data
 
                 entity.HasKey(e => e.id);
 
-                entity.Property(e => e.id).HasColumnName("id"); // Certifique-se de que a propriedade corresponda ao nome da coluna no banco de dados
+                entity.Property(e => e.id).HasColumnName("id");
 
-                entity.Property(e => e.nome)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.nome).HasMaxLength(100).IsUnicode(false);
 
-                entity.Property(e => e.cpf)
-                    .HasMaxLength(11) // Ajuste o tamanho máximo conforme necessário
-                    .IsUnicode(false);
+                entity.Property(e => e.cpf).HasMaxLength(11).IsUnicode(false);
 
-                entity.Property(e => e.idade)
-                    .HasColumnType("int"); // Corrigido para int
+                entity.Property(e => e.idade).HasColumnType("int");
 
-                entity.Property(e => e.sexo)
-                    .HasMaxLength(1) // Ajuste o tamanho máximo conforme necessário
-                    .IsUnicode(false);
+                entity.Property(e => e.sexo).HasMaxLength(1).IsUnicode(false);
 
-                entity.Property(e => e.peso)
-                    .HasColumnType("decimal(5,2)"); // Corrigido para decimal(5,2)
+                entity.Property(e => e.peso).HasColumnType("decimal(5,2)");
 
-                entity.Property(e => e.altura)
-                    .HasColumnType("decimal(3,2)"); // Corrigido para decimal(3,2)
+                entity.Property(e => e.altura).HasColumnType("decimal(3,2)");
+            });
+
+            modelBuilder.Entity<EnderecoConfig>(entity =>
+            {
+                entity.ToTable("enderecos");
+
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Pais)
+                    .IsUnicode(false)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Cidade)
+                    .IsUnicode(false)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Estado)
+                    .IsUnicode(false)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Endereco)
+                    .IsUnicode(false)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Bairro)
+                    .IsUnicode(false)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Numero)
+                    .HasMaxLength(50)
+                    .IsRequired();
+
+                entity.Property(e => e.Complemento)
+                    .IsUnicode(false)
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.ClientId).IsUnicode(false);
+
             });
 
             OnModelCreatingPartial(modelBuilder);

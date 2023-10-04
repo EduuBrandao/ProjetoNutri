@@ -8,6 +8,6 @@ namespace Application.Interface
         Task<Endereco> ObterEnderecoPorCep(string cep);
 
         Task<List<ClientesResponseDTO>> ObterClientes();
-        
+
     }
 }

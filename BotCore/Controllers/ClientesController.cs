@@ -30,7 +30,7 @@ namespace CoreAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostClientes([FromBody] ClientesRequestDTO cliente)
+        public async Task<IActionResult> PostClientes([FromBody] ClienteInfo cliente)
         {
             try
             {

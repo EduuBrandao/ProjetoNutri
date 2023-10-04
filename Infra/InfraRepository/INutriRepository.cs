@@ -7,7 +7,7 @@ namespace Infra.InfraRepository
         Task<List<ClientesResponseDTO>> Get();
 
         Task<ClientesResponseDTO> GetById(int id);
-        void Post(ClientesRequestDTO cliente);
+        ClientesResponseDTO Post(ClientesRequestDTO cliente);
         Task<ClientesResponseDTO> Put(ClientesRequestDTO cliente);
         Task<string> Delete(string cpf);
     }

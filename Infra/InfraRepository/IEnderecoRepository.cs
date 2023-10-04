@@ -9,6 +9,8 @@ namespace Infra.InfraRepository
 {
     public interface IEnderecoRepository
     {
-        Task<List<EnderecoResponseDTO>> Get();
+        Task<List<EnderecoDTO>> Get();
+
+        void Post(List<EnderecoDTO> enderecos);
     }
 }

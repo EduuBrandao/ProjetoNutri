@@ -6,7 +6,7 @@ namespace Application.Interface
     {
         Task<List<ClienteInfo>> ObterClientes();
 
-        void AdicionarClientes(ClientesRequestDTO cliente);
+        void AdicionarClientes(ClienteInfo cliente);
 
         Task<ClientesResponseDTO> AtualizarClientes(ClientesRequestDTO cliente);
 

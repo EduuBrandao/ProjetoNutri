@@ -49,11 +49,15 @@ namespace Infra.Service
             return Mapper<ClientesResponseDTO>(document);
         }
 
-        public void Post(ClientesRequestDTO cliente)
+        public ClientesResponseDTO Post(ClientesRequestDTO cliente)
         {
             ClientesConfig clientesConfig = Mapper<ClientesConfig>(cliente);
             Context.DadosClientes.Add(clientesConfig);
             Context.SaveChanges();
+
+            var document = Context.DadosClientes.Where(x => x.cpf == clientesConfig.cpf).FirstOrDefault();
+
+            return Mapper<ClientesResponseDTO>(document);
         }
 
         public async Task<ClientesResponseDTO> Put(ClientesRequestDTO cliente)

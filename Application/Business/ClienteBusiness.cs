@@ -18,12 +18,15 @@ namespace Application.Business
             var endereco = await _endereco.Get();
             var clientes = await _Nutri.Get();
 
-            return ClienteAdapter(endereco, clientes);
+            return ClientAdapter(endereco, clientes);
         }
-        public void AdicionarClientes(ClientesRequestDTO cliente)
+        public void AdicionarClientes(ClienteInfo cliente)
         {
-            _Nutri.Post(cliente);
+            var informacoesCliente =  _Nutri.Post(PostClientAdapter(cliente));
+
+            _endereco.Post(PostAdressAdapter(informacoesCliente, cliente.Endereco));
         }
+
 
         public async Task<ClientesResponseDTO> AtualizarClientes(ClientesRequestDTO cliente)
         {
@@ -36,7 +39,7 @@ namespace Application.Business
         }
 
 
-        private List<ClienteInfo> ClienteAdapter(List<EnderecoResponseDTO> endereco, List<ClientesResponseDTO> clientes)
+        private List<ClienteInfo> ClientAdapter(List<EnderecoDTO> endereco, List<ClientesResponseDTO> clientes)
         {
             var clientesInfos = new List<ClienteInfo>();
 
@@ -57,6 +60,42 @@ namespace Application.Business
                 clientesInfos.Add(clienteInfo);
             }
             return clientesInfos;
+        }
+
+        private ClientesRequestDTO PostClientAdapter(ClienteInfo cliente)
+        {
+            return new ClientesRequestDTO
+            {
+                nome = cliente.Nome,
+                cpf = cliente.Cpf,
+                idade = cliente.Idade,
+                altura = cliente.Altura,
+                sexo = cliente.Sexo
+            };
+        }
+
+
+        private List<EnderecoDTO> PostAdressAdapter(ClientesResponseDTO informacoesCliente, List<EnderecoDTO> informacoesEnderecos)
+        {
+            var enderecos = new List<EnderecoDTO>();
+            foreach (var enderecoInfo in informacoesEnderecos)
+            {
+                var endereco = new EnderecoDTO
+                {
+                    ClientId = informacoesCliente.Id,
+                    Pais = enderecoInfo.Pais,
+                    Cidade = enderecoInfo.Cidade,
+                    Bairro = enderecoInfo.Bairro,
+                    Endereco = enderecoInfo.Endereco,
+                    Estado = enderecoInfo.Estado,
+                    Numero = enderecoInfo.Numero,
+                    Complemento = enderecoInfo.Complemento
+                };
+
+                enderecos.Add(endereco);
+            }
+
+            return enderecos;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Domain.Entidades.Nutricionista.Clientes
 {
     public class ClienteInfo
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public int Idade { get; set; }
         public string Sexo { get; set; }
@@ -15,6 +16,6 @@ namespace Domain.Entidades.Nutricionista.Clientes
         public decimal Peso { get; set; }
         public decimal Altura { get; set; }
 
-        public List<EnderecoResponseDTO> Endereco { get; set; }
+        public List<EnderecoDTO> Endereco { get; set; }
     }
 }

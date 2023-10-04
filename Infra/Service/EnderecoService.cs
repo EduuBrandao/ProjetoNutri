@@ -19,11 +19,22 @@ namespace Infra.Service
             _mapper = mapper;
         }
 
-        public async Task<List<EnderecoResponseDTO>> Get()
+        public async Task<List<EnderecoDTO>> Get()
         {
             var document = Context.EnderecoClientes.ToList();
 
-            return Mapper<List<EnderecoResponseDTO>>(document);
+            return Mapper<List<EnderecoDTO>>(document);
+        }
+
+        public void Post(List<EnderecoDTO> enderecos)
+        {
+            foreach (var endereco in enderecos)
+            {
+                EnderecoConfig enderecoConfig = Mapper<EnderecoConfig>(endereco);
+                Context.EnderecoClientes.Add(enderecoConfig);
+                Context.SaveChanges();
+            }
+
         }
 
         protected T Mapper<T>(Object data)

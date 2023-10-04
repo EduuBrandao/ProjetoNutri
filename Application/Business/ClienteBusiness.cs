@@ -27,7 +27,6 @@ namespace Application.Business
             _endereco.Post(PostAdressAdapter(informacoesCliente, cliente.Endereco));
         }
 
-
         public async Task<ClientesResponseDTO> AtualizarClientes(ClientesRequestDTO cliente)
         {
             return await _Nutri.Put(cliente);

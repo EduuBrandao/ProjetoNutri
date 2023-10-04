@@ -22,7 +22,7 @@ namespace Application.Business
         }
         public void AdicionarClientes(ClienteInfo cliente)
         {
-            var informacoesCliente =  _Nutri.Post(PostClientAdapter(cliente));
+            var informacoesCliente = _Nutri.Post(PostClientAdapter(cliente));
 
             _endereco.Post(PostAdressAdapter(informacoesCliente, cliente.Endereco));
         }

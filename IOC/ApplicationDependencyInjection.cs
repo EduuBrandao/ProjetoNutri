@@ -20,7 +20,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IEnderecoRepository, EnderecoService>();
             services.AddScoped<ICep, CepBusiness>();
             services.AddScoped<IClientes, ClienteBusiness>();
-            
 
             return services;
         }

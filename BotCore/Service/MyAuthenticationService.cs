@@ -7,10 +7,7 @@ namespace BotCore.Service
     {
         public bool IsAuthenticated(ClaimsPrincipal user)
         {
-            // Verifica se o usuário está autenticado de acordo com as suas regras de negócio
-            // ...
-
-            return true; // ou false, dependendo do resultado da verificação
+            return true;
         }
     }
 }

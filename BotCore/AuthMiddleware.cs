@@ -17,7 +17,7 @@ namespace BotCore
         }
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
-        {           
+        {
             if (!_authenticationService.IsAuthenticated(context.User))
             {
                 context.Response.Redirect("/Auth");

@@ -12,5 +12,7 @@ namespace Infra.InfraRepository
         Task<List<EnderecoDTO>> Get();
 
         void Post(List<EnderecoDTO> enderecos);
+
+        void Delete(int clientId);
     }
 }

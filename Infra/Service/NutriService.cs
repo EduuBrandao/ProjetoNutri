@@ -25,13 +25,13 @@ namespace Infra.Service
                     throw new ArgumentException("Cliente não encontrado no banco de dados.", nameof(cpf));
 
                 Context.DadosClientes.Remove(document);
+
                 Context.SaveChanges();
-                return $"Usuario do CPF: {cpf} deletado da base de dados!!";
+                 return "Dados do cliente deletado com sucesso!";
             }
             catch (Exception)
             {
                 throw new ArgumentException("Algo deu errado", nameof(cpf));
-                return $"Não foi possivel deletar o cliente do cpf: {cpf}";
             }
         }
 
@@ -42,9 +42,9 @@ namespace Infra.Service
             return Mapper<List<ClientesResponseDTO>>(document);
         }
 
-        public async Task<ClientesResponseDTO> GetById(int id)
+        public async Task<ClientesResponseDTO> GetByCPF(string cpf)
         {
-            var document = await Context.DadosClientes.Where(x => x.id == id).FirstOrDefaultAsync();
+            var document = await Context.DadosClientes.Where(x => x.cpf == cpf).FirstOrDefaultAsync();
 
             return Mapper<ClientesResponseDTO>(document);
         }

@@ -1,7 +1,10 @@
 ﻿using Application.Interface;
 using Domain.Entidades.Nutricionista.Clientes;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace CoreAPI.Controllers
@@ -58,7 +61,13 @@ namespace CoreAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> CancelarClientes([FromBody] string cpf)
+        [SwaggerOperation(
+          Summary = "Cancelar um cliente pelo CPF",
+          Description = "Cancela um cliente com base no CPF informado.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Cliente cancelado com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Erro ao excluir o cliente.")]
+        public async Task<IActionResult> CancelarClientes(
+          [FromBody][Required] string cpf)
         {
             try
             {

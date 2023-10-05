@@ -34,6 +34,10 @@ namespace Application.Business
 
         public async Task<string> DeletarCliente(string cpf)
         {
+            var cliente = await _Nutri.GetByCPF(cpf);
+
+            _endereco.Delete(cliente.Id);
+
             return await _Nutri.Delete(cpf);
         }
 

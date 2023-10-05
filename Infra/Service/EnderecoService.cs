@@ -19,6 +19,28 @@ namespace Infra.Service
             _mapper = mapper;
         }
 
+        public void Delete(int clientId)
+        {
+            try
+            {
+                var enderecos = Context.EnderecoClientes.Where(x => x.ClientId == clientId).ToList();
+
+                if (enderecos == null)
+                    throw new ArgumentException("Endereco não encontrado no banco de dados.", nameof(clientId));
+
+                foreach (var endereco in enderecos)
+                {
+                    Context.EnderecoClientes.Remove(endereco);
+                    Context.SaveChanges();
+                }
+            }
+
+            catch
+            {
+                throw new ArgumentException("Algo deu errado", nameof(clientId));
+            }
+        }
+
         public async Task<List<EnderecoDTO>> Get()
         {
             var document = Context.EnderecoClientes.ToList();

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i2absc+COAzd1rCUrLKbHBKDUAFTz45JhQtooR/Y/pW2ujyS/fsBh4/NlT9UtE0d3GwCZjtITvZ2CFYmicrsig==",
+  "dgSpecHash": "k9Lx+miiARRlLRIg9VUHWgMGxfUb1hcPnT//C1+T23hDXVUGqWUicrr/xco2TQKbyCUdlwdoeA0DYhNr5BueqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\BotCore\\CoreAPI.csproj",
   "expectedPackageFiles": [
@@ -62,6 +62,7 @@
     "C:\\Users\\Edu\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Edu\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.5.0\\swashbuckle.aspnetcore.annotations.6.5.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",

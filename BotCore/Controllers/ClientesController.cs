@@ -21,6 +21,11 @@ namespace CoreAPI.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(
+          Summary = "Pegar informações de clientes no banco de dados",
+          Description = "buscar uma lista de clientes salva no banco")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Lista retornada com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Erro ao retornar a lista de clientes.")]
         public async Task<IActionResult> GetClientes()
         {
             var Clientes = await _clientes.ObterClientes();
@@ -33,6 +38,11 @@ namespace CoreAPI.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(
+          Summary = "Adicionar informações do cliente no banco de dados",
+          Description = "adicionar um cliente com base na classe ClienteInfo.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Cliente adicionado com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Erro ao adicionar o cliente.")]
         public async Task<IActionResult> PostClientes([FromBody] ClienteInfo cliente)
         {
             try
@@ -47,6 +57,11 @@ namespace CoreAPI.Controllers
         }
 
         [HttpPut]
+        [SwaggerOperation(
+          Summary = "Atualizar informações do cliente no banco de dados",
+          Description = "atualiza um cliente com base na classe ClienteRequestDTO.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Cliente atualizado com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Erro ao atualizar o cliente.")]
         public async Task<IActionResult> PutClientes([FromBody] ClientesRequestDTO cliente)
         {
             try

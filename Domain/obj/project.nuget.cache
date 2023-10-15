@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "z6qB/X1WR5TfOHHo6W12h4RGuD+p7QEDFUZ/xfeWAsDdVTFu2E2FTjfSw7v3OVM5oco85tjNM+bcG0G3VX+ATg==",
+  "dgSpecHash": "sVjgIuVepPAQ/c7NTw8waT4iOzn5ZhhRAueE6P6nCUxotaRAcZKwAA8mvglWgwjthqyXmVz6CZX9uZpJqUqk+w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Edu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Edu\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Edu\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Edu\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Entidades.Login;
 using Domain.Entidades.Nutricionista.Clientes;
 using Infra.Models;
 using System;
@@ -21,6 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 cfg.CreateMap<ClientesConfig, ClientesRequestDTO>();
                 cfg.CreateMap<EnderecoDTO, EnderecoConfig>();
                 cfg.CreateMap<EnderecoConfig, EnderecoDTO>();
+                cfg.CreateMap<User, LoginConfig>();
             }
            );
             IMapper mapper = config.CreateMapper();

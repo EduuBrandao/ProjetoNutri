@@ -18,8 +18,10 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddScoped<INutriRepository, NutriService>();
             services.AddScoped<IEnderecoRepository, EnderecoService>();
+            services.AddScoped<ILoginRepository, LoginService>();
             services.AddScoped<ICep, CepBusiness>();
             services.AddScoped<IClientes, ClienteBusiness>();
+            services.AddScoped<ILogin, LoginBusiness>();
 
             return services;
         }

@@ -22,6 +22,8 @@ namespace Infra.Data
         public virtual DbSet<ClientesConfig> DadosClientes { get; set; }
         public virtual DbSet<EnderecoConfig> EnderecoClientes { get; set; }
 
+        public virtual DbSet<LoginConfig> LoginClientes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
@@ -47,48 +49,58 @@ namespace Infra.Data
                 entity.Property(e => e.altura).HasColumnType("decimal(3,2)");
             });
 
-            modelBuilder.Entity<EnderecoConfig>(entity =>
+            modelBuilder.Entity<LoginConfig>(entity =>
             {
-                entity.ToTable("enderecos");
+                entity.ToTable("Login");
 
                 entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.Pais)
-                    .IsUnicode(false)
-                    .HasMaxLength(255)
-                    .IsRequired();
-
-                entity.Property(e => e.Cidade)
-                    .IsUnicode(false)
-                    .HasMaxLength(255)
-                    .IsRequired();
-
-                entity.Property(e => e.Estado)
-                    .IsUnicode(false)
-                    .HasMaxLength(255)
-                    .IsRequired();
-
-                entity.Property(e => e.Endereco)
-                    .IsUnicode(false)
-                    .HasMaxLength(255)
-                    .IsRequired();
-
-                entity.Property(e => e.Bairro)
-                    .IsUnicode(false)
-                    .HasMaxLength(255)
-                    .IsRequired();
-
-                entity.Property(e => e.Numero)
-                    .HasMaxLength(50)
-                    .IsRequired();
-
-                entity.Property(e => e.Complemento)
-                    .IsUnicode(false)
-                    .HasMaxLength(255);
-
-                entity.Property(e => e.ClientId).IsUnicode(false);
-
+                entity.Property(e => e.Email).IsRequired();
+                entity.Property(e => e.Password).IsRequired();
+                entity.Property(e => e.UserType).IsRequired().HasMaxLength(50); // Defina o tamanho adequado aqui
             });
+
+            modelBuilder.Entity<EnderecoConfig>(entity =>
+        {
+            entity.ToTable("enderecos");
+
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Pais)
+                .IsUnicode(false)
+                .HasMaxLength(255)
+                .IsRequired();
+
+            entity.Property(e => e.Cidade)
+                .IsUnicode(false)
+                .HasMaxLength(255)
+                .IsRequired();
+
+            entity.Property(e => e.Estado)
+                .IsUnicode(false)
+                .HasMaxLength(255)
+                .IsRequired();
+
+            entity.Property(e => e.Endereco)
+                .IsUnicode(false)
+                .HasMaxLength(255)
+                .IsRequired();
+
+            entity.Property(e => e.Bairro)
+                .IsUnicode(false)
+                .HasMaxLength(255)
+                .IsRequired();
+
+            entity.Property(e => e.Numero)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            entity.Property(e => e.Complemento)
+                .IsUnicode(false)
+                .HasMaxLength(255);
+
+            entity.Property(e => e.ClientId).IsUnicode(false);
+
+        });
 
             OnModelCreatingPartial(modelBuilder);
         }

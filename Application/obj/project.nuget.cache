@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "09A6xWvkt7l/R6u39TpM++iQFNILks5JItHf4qM2KNdpIm18tJ7hF6WBWh+QuW8/2U106G5RCB2yi7EK8gw/ng==",
+  "dgSpecHash": "Q51Q6RGtiHv/14ezxSUDpQvLKJFFbZcTl1P9C9syaGtpbio4TfDuuwIfPoWaMC+GcyYH3Wx379Gg22kjkHXdIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edu\\Desktop\\Nova pasta\\botcore\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -57,6 +57,7 @@
     "C:\\Users\\Edu\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
+    "C:\\Users\\Edu\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Edu\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],

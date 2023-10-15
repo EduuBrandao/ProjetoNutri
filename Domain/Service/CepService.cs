@@ -2,6 +2,7 @@
 using Domain.Entidades.Correio;
 using Domain.Interfaces;
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace Domain.Service
 {

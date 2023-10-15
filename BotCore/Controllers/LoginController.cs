@@ -21,10 +21,11 @@ namespace CoreAPI.Controllers
             var resposta = await _login.BuscarLoginCliente(credenciais);
 
             if (resposta != null)
-                return Ok(resposta);
+                return Ok(new AuthenticationResponse { Message = resposta });
 
-            return BadRequest("Credenciais inválidas. Verifique seu e-mail e senha.");
+            return BadRequest(new AuthenticationResponse { Message = "Credenciais inválidas. Verifique seu e-mail e senha." });
         }
+
 
     }
 }

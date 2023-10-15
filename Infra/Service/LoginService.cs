@@ -27,7 +27,7 @@ namespace Infra.Service
             if (credenciaisLogin == null)
                 return "Usuário não existe na nossa base de dados";
 
-            return credenciaisLogin.Password == credenciais.Password ? 
+            return credenciaisLogin.Password == credenciais.Password ?
                    "Usuário autenticado" : "Usuário não existe na nossa base de dados";
         }
 
